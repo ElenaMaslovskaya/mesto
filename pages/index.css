@@ -14,6 +14,12 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__like-container/element__like-container.css);
+@import url(../blocks/element/__name/element__name.css);
+@import url(../blocks/element/__like-icon/element__like-icon.css);
+@import url();
+@import url();
 @import url();
 @import url();
 @import url();

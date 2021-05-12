@@ -1,0 +1,9 @@
+.element__like-container {
+   margin: auto;
+   max-width: 246px;
+   display: flex;
+   justify-content: space-between;
+   text-align: left;
+   position: relative;
+   align-items: center;
+}
