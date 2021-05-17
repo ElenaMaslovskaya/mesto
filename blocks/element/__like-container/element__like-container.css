@@ -1,9 +1,10 @@
 .element__like-container {
-   margin: auto;
-   max-width: 246px;
+   width: 246px;
+   height: 23px;
+   margin: 25px auto 32px;
    display: flex;
-   justify-content: space-between;
-   text-align: left;
    position: relative;
    align-items: center;
+   justify-content: space-between;
+   box-sizing: border-box;
 }

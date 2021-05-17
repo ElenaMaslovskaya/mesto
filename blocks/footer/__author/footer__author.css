@@ -1,8 +1,9 @@
-.profile__info_user-job {
+.footer__author {
    margin: 0px;
    font-size: 18px;
    font-style: normal;
    font-weight: 400;
    line-height: 22px;
    letter-spacing: 0em;
+   text-align: left;
 }

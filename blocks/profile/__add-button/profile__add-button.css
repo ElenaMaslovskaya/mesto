@@ -4,6 +4,5 @@
    position: absolute;
    right: 0px;
    border: 2px solid #FFFFFF;
-   background: #000000;
-   color: #FFFFFF;
+   background-image: url(../../../images/button-add.svg);
 }

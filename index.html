@@ -16,11 +16,11 @@
       <section class="profile">
          <div class="profile__avatar"></div>
          <div class="profile__info">
+            <button class="profile__button profile__edit-button"></button>
             <h1 class="profile__info_user-name">Жак-Ив Кусто</h1>
             <p class="profile__info_user-job">Исследователь океана</p>
-            <button class="profile__edit-button"></button>
          </div>
-         <button class="profile__add-button">+</button>
+         <button class="profile__button profile__add-button"></button>
       </section>
       <section class="elements">
          <div class="element">
@@ -67,8 +67,23 @@
          </div>
       </section>
       <footer class="footer">
-         
+         <h3 class="footer__author">© 2020 Mesto Russia</h3>
       </footer>
+   </div>
+
+   <!-- Попап редактирования -->
+   <div id="editProfile" class="popup">
+      <div class="popup__container">
+         <form name="userProfile" class="popup__form">
+            <fieldset class="popup__set">
+               <p class="popup__title">Редактировать профиль</p>
+               <label class="popup__form-field"></label>
+               <label class="popup__form-field"></label>
+               <button type="submit" class="popup__button">Сохранить</button>
+            </fieldset>
+            <button type="button" class="popup__close-button"></button>
+         </form>
+      </div>
    </div>
 </body>
 </html>
