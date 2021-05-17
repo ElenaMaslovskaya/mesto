@@ -1,6 +1,10 @@
 .popup__container {
-   min-height: 100%;
-   display: flex;
+   width: 430px;
+   height: 330px;
+   border: 1px #000000 solid;
+   border-radius: 10px;
+   overflow: hidden;
    align-items: center;
    justify-content: center;
+   background-color: #FFFFFF;
 }
