@@ -6,3 +6,16 @@
    right: -49px;
    cursor: pointer;
 }
+
+.popup__close:hover {
+   opacity: 0.6;
+}
+
+@media screen and (max-width: 650px) {
+   .popup__close {
+      width: 39px;
+      height: 39px;
+      right: 0;
+      top: -49px;
+   }
+}

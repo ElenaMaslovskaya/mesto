@@ -7,3 +7,14 @@
    align-items: center;
    position: relative;
 }
+
+@media screen and (max-width: 650px) {
+   .profile {
+      max-width: 282px;
+      min-height: 286px;
+      margin: 42px auto 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+   }
+}

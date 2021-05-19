@@ -5,4 +5,13 @@
    color: #000000;
    position: absolute;
    right: 0px;
+   cursor: pointer;
+}
+
+.element__like-icon:hover {
+   opacity: 0.8;
+}
+.element__like-icon:active {
+   background-image: url(../../../images/like-icon_active.svg);
+   opacity: 1;
 }

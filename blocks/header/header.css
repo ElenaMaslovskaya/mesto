@@ -2,3 +2,9 @@
    min-height: 74px;
    border-bottom: 1px solid #545454;
 }
+
+@media screen and (max-width: 650px) {
+   .header {
+      min-height: 54px;
+   }
+}
