@@ -16,24 +16,19 @@ popup.addEventListener('click', function (event) {
    }
 })
 
-let formElement = document.querySelector('.popup__form'); // Воспользуйтесь методом querySelector()
+let formElement = document.querySelector('.popup__form');
 
 function formSubmitHandler (evt) {
 	evt.preventDefault(); 
 
-	let nameInput = document.querySelector('#name');// Воспользуйтесь инструментом .querySelector()
-	let jobInput = document.querySelector('#job'); // Воспользуйтесь инструментом .querySelector()
+	let nameInput = document.querySelector('#name');
+	let jobInput = document.querySelector('#job');
 
-	// Получите значение полей из свойства value
       nameInput = document.querySelector('#name').value;
-      console.log(nameInput);
       jobInput = document.querySelector('#job').value;
-	// Выберите элементы, куда должны быть вставлены значения полей
+
       document.querySelector('.profile__info_user-name').textContent = nameInput;
       document.querySelector('.profile__info_user-job').textContent = jobInput;
-	// Вставьте новые значения с помощью textContent
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
