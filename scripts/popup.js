@@ -27,8 +27,8 @@ function formSubmitHandler (evt) {
       nameInput = document.querySelector('#name').value;
       jobInput = document.querySelector('#job').value;
 
-      document.querySelector('.profile__info_user-name').textContent = nameInput;
-      document.querySelector('.profile__info_user-job').textContent = jobInput;
+      document.querySelector('.profile__info_username').textContent = nameInput;
+      document.querySelector('.profile__info_userjob').textContent = jobInput;
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
