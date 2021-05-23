@@ -2,8 +2,8 @@
    width: 246px;
    height: 23px;
    margin: 25px auto 32px;
-   display: flex;
-   position: relative;
+   display: grid;
+   grid-template-columns: 1fr 22px;
    align-items: center;
    justify-content: space-between;
    box-sizing: border-box;
