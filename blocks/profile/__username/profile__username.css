@@ -1,4 +1,4 @@
-.profile__info_username {
+.profile__username {
    margin: 0px;
    padding: 0px;
    font-size: 42px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 650px) {
-   .profile__info_username {
+   .profile__username {
       font-size: 27px;
       font-style: normal;
       font-weight: 500;

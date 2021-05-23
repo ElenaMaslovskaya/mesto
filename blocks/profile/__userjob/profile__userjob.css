@@ -1,4 +1,4 @@
-.profile__info_userjob {
+.profile__userjob {
    margin: 0px;
    font-size: 18px;
    font-style: normal;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 650px) {
-   .profile__info_userjob {
+   .profile__userjob {
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
