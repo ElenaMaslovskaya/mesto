@@ -3,7 +3,6 @@
    height: 120px;
    border-radius: 50%;
    background-image: url(../../../images/avatar.jpg);
-   margin-right: 30px;
 }
 
 @media screen and (max-width: 650px) {

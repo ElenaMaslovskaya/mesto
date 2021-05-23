@@ -3,9 +3,9 @@
    min-height: 120px;
    margin-top: 40px;
    color: #FFFFFF;
-   display: flex;
+   display: grid;
+   grid-template-columns: 120px 1fr 1fr;
    align-items: center;
-   position: relative;
 }
 
 @media screen and (max-width: 650px) {
