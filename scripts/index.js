@@ -18,11 +18,11 @@ popup.addEventListener('click', function (event) {
 
 let formElement = document.querySelector('.popup__form');
 
+let nameInput = document.querySelector('#name');
+let jobInput = document.querySelector('#job');
+
 function formSubmitHandler (evt) {
 	evt.preventDefault(); 
-
-	let nameInput = document.querySelector('#name');
-	let jobInput = document.querySelector('#job');
 
       nameInput = document.querySelector('#name').value;
       jobInput = document.querySelector('#job').value;
@@ -30,5 +30,6 @@ function formSubmitHandler (evt) {
       document.querySelector('.profile__username').textContent = nameInput;
       document.querySelector('.profile__userjob').textContent = jobInput;
 }
+
 
 formElement.addEventListener('submit', formSubmitHandler);
