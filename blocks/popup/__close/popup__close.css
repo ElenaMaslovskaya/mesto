@@ -2,9 +2,13 @@
    position: absolute;
    width: 57px;
    height: 57px;
+   padding: 0px;
    top: -47px;
    right: -49px;
    cursor: pointer;
+   background: transparent;
+   border: none;
+   background-image: url('../../../images/Close-popup.svg');
 }
 
 .popup__close:hover {

@@ -2,12 +2,12 @@
    width: 22px;
    height: 19px;
    background-image: url(../../../images/Like-icon.svg);
-   color: #000000;
    cursor: pointer;
+   border: none;
 }
 
 .element__like-icon:hover {
-   opacity: 0.8;
+   opacity: 0.5;
 }
 .element__like-icon:active {
    background-image: url(../../../images/like-icon_active.svg);
