@@ -19,7 +19,8 @@
    .popup__close {
       width: 39px;
       height: 39px;
-      right: 0;
-      top: -49px;
+      right: -2px;
+      top: -51px;
+      background-image: url('../../../images/Close\ Icon\ mobile.svg');
    }
 }
