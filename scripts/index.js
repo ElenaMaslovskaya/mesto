@@ -24,9 +24,9 @@ popup.classList.toggle('popup_opened');
 
 function formSubmitHandler (event) {
 event.preventDefault();
-document.querySelector('.profile__username').textContent = popupName.value;
-document.querySelector('.profile__userjob').textContent = popupJob.value;
-popup.classList.toggle('popup_opened');
+userName.textContent = popupName.value;
+userJob.textContent = popupJob.value;
+closeForm ();
 }
 
 function closeButtonClick(event) {
