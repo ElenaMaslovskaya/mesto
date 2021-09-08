@@ -56,6 +56,13 @@ function closePhotoForm() {
    popupPhoto.classList.toggle('popup_opened');
 }
 
+function photoAddHandler(event) {
+   event.preventDefault();
+   photoName.textContent = popupPhotoName.value;
+   photoLink.src = popupPhotoLink.value;
+   closePhotoForm(popupPhotoName.value, popupPhotoLink.value);
+}
+
 function closePhotoButtonClick(event) {
    if (event.target === event.currentTarget) {
       closePhotoForm();
