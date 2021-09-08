@@ -35,35 +35,25 @@ function closeButtonClick(event) {
    }
 }
 
-let photoName = document.querySelector('.element__name');
-let photoLink = document.querySelector('.element__image');
 let popupPhoto = document.querySelector('#photo-popup');
-let popupPhotoOpenButton = document.querySelector('.profile__add-button');
-let popupPhotoCloseButton = document.querySelector('.popup__close');
-let popupPhotoForm = document.querySelector('.popup__form');
+let photoName = document.querySelector('.element__name');
+let photoLink = document.querySelector('.elememt__image');
 let popupPhotoName = document.querySelector('#photo-name');
 let popupPhotoLink = document.querySelector('#link');
+let popupPhotoOpenButton = document.querySelector('.profile__add-button');
+let popupPhotoCloseButton = document.querySelector('#popup-photo-close');
 
 popupPhotoOpenButton.addEventListener('click', openPhotoForm);
 popupPhotoCloseButton.addEventListener('click', closePhotoForm);
-popupPhotoForm.addEventListener('submit', formPhotoSubmitHandler);
 popupPhoto.addEventListener('click', closePhotoButtonClick);
 
 function openPhotoForm() {
-   popupPhotoName.value = photoName.textContent;
-   popupPhotoLink.value = photoLink.textContent;
    popupPhoto.classList.toggle('popup_opened');
 }
+
 
 function closePhotoForm() {
    popupPhoto.classList.toggle('popup_opened');
-}
-
-function formSubmitHandler(event) {
-   event.preventDefault();
-   photoName.textContent = popupPhotoName.value;
-   photoLink.textContent = popupPhotoLink.value;
-   closePhotoForm();
 }
 
 function closePhotoButtonClick(event) {
