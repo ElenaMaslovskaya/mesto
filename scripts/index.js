@@ -83,17 +83,26 @@ function createCard(item) {
 
    newElement.querySelector('.element__image').src = item.link;
    newElement.querySelector('.element__name').textContent = item.name;
-
-   //Лайк поставить/удалить
-   newElement.querySelector('.element__like-icon').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('element__like-icon_active');
-   });
+   newElement.querySelector('.element__like-icon').addEventListener('click', likeElement);
+   newElement.querySelector('.element__remove').addEventListener('click', removeElement);
 
    elements.append(newElement);
-
 }
 
 initialCards.map(createCard);
+
+//Лайк поставить/удалить
+function likeElement(evt) {
+   evt.target.classList.toggle('element__like-icon_active');
+};
+
+//Удаление карточки
+function removeElement () {
+   const removeButton = document.querySelector('.element__remove');
+   const element = removeButton.closest('.element');
+   element.remove();
+};
+
 
 let popupPhoto = document.querySelector('#photo-popup');
 let photoName = document.querySelector('.element__name');
@@ -101,8 +110,7 @@ let photoLink = document.querySelector('.elememt__image');
 let popupPhotoName = document.querySelector('#photo-name');
 let popupPhotoLink = document.querySelector('#link');
 let popupPhotoOpenButton = document.querySelector('.profile__add-button');
-let popupPhotoCloseButton = document.querySelector
-('#popup-photo-close');
+let popupPhotoCloseButton = document.querySelector('#popup-photo-close');
 let popupPhotoForm = document.querySelector('#photo-form');
 
 popupPhotoOpenButton.addEventListener('click', openPhotoForm);
