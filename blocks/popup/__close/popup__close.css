@@ -9,6 +9,7 @@
    background: transparent;
    border: none;
    background-image: url('../../../images/Close-popup.svg');
+
 }
 
 .popup__close:hover {

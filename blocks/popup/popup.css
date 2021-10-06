@@ -8,4 +8,5 @@
    display: none;
    align-items: center;
    justify-content: center;
+   z-index: 20;
 }

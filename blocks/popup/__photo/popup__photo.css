@@ -1,0 +1,12 @@
+.popup__photo {
+   position: relative;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin: auto;
+}
+
+@media screen and (max-width: 650px) {
+   .popup__photo {
+   }
+}

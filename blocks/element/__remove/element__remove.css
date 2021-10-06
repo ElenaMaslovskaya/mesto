@@ -7,7 +7,7 @@
    background-image: url(../../../images/Trash.svg);
    background-color: transparent;
    border: none;
-   z-index: 10;
+   z-index: 4;
 }
 
 .element__remove:hover {
