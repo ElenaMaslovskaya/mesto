@@ -6,10 +6,10 @@ const popupOpenBtn = document.querySelector('.profile__edit-button'); //кноп
 const popupCloseBtn = popupUser.querySelector('.popup__close'); //кнопка закрытия попапа редактирования профиля
 
 const popupPhotoOpenBtn = document.querySelector('.profile__add-button'); //кнопка открытия попапа добавления фотографий
-const popupPhotoCloseBtn = popupPhoto.querySelector('popup__close'); //кнопка закрытия попапа добавления фотографий
+const popupPhotoCloseBtn = popupPhoto.querySelector('.popup__close'); //кнопка закрытия попапа добавления фотографий
 
 const popupImageOpenBtn = document.querySelector('.element__image'); //кнопка открытия попапа просмотра фотографий
-const popupImageCloseBtn = popupImage.querySelector('popup__close'); //кнопка закрытия попапа просмотра фотографий
+const popupImageCloseBtn = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа просмотра фотографий
 
 const removeBtn = document.querySelectorAll('.element__remove'); //кнопка удаления карточки
 
@@ -82,7 +82,7 @@ function addElement(event) {
    togglePopup(popupPhoto);
 }
 
-contentForm.addEventListener('submit', addElement);
+photoForm.addEventListener('submit', addElement);
 
 function addCards(cards) {
    const newCards = cards.map(createCard);
@@ -121,7 +121,7 @@ popupImageCloseBtn.addEventListener('click', () => togglePopup(popupImage));
 
 //универсальная функция для открытия/закрытия попапов
 function togglePopup(modal) {
-   modal.classList.toggle('.popup_opened');
+   modal.classList.toggle('popup_opened');
 }
 
 //функция редактирования профиля
