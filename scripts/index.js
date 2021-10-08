@@ -6,10 +6,10 @@ const popupOpenBtn = document.querySelector('.profile__edit-button'); //кноп
 const popupCloseBtn = popupUser.querySelector('.popup__close'); //кнопка закрытия попапа редактирования профиля
 
 const popupPhotoOpenBtn = document.querySelector('.profile__add-button'); //кнопка открытия попапа добавления фотографий
-const popupPhotoCloseBtn = popupPhoto.querySelector('popup-close'); //кнопка закрытия попапа добавления фотографий
+const popupPhotoCloseBtn = popupPhoto.querySelector('popup__close'); //кнопка закрытия попапа добавления фотографий
 
 const popupImageOpenBtn = document.querySelector('.element__image'); //кнопка открытия попапа просмотра фотографий
-const popupImageCloseBtn = popupImage.querySelector('popup-close'); //кнопка закрытия попапа просмотра фотографий
+const popupImageCloseBtn = popupImage.querySelector('popup__close'); //кнопка закрытия попапа просмотра фотографий
 
 const removeBtn = document.querySelectorAll('.element__remove'); //кнопка удаления карточки
 
