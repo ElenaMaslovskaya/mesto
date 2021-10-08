@@ -24,61 +24,22 @@
                 </div>
                 <button type="button" class="profile__add-button"></button>
             </section>
+
+            <!--Карточки с фотографиями-->
             <section class="elements">
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Карачаевск</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1404681-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Гора Эльбрус</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1556355-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Домбай</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1404681-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Гора Эльбрус</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1556355-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Домбай</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Фото">
-                    <div class="element__like-container">
-                        <h2 class="element__name">Карачаево-Черкессия</h2>
-                        <button type="button" class="element__like-icon"></button>
-                    </div>
-                </div>
             </section>
+
         </main>
         <footer class="footer">
             <p class="footer__author">© 2021 Mesto Russia</p>
         </footer>
     </div>
 
-    <!-- Попап редактирования -->
+    <!-- Попап редактирования профиля пользователя -->
 
-    <section class="popup " id="user-popup">
-        <div class="popup__container">
-            <button type="button" class="popup__close" id="popup-user-close"></button>
+    <section class="popup" id="user-popup">
+        <div class="popup__container popup__container_user">
+            <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" action="#" name="user-form">
                 <input type="text" name="name" class="popup__input" placeholder="Имя" id="name">
@@ -91,16 +52,41 @@
     <!-- Попап добавления фотографий-->
 
     <section class="popup" id="photo-popup">
-        <div class="popup__container">
-            <button type="button" class="popup__close" id="popup-photo-close"></button>
+        <div class="popup__container popup__container_photo">
+            <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form" action="#" name="photo-form">
+            <form class="popup__form" action="#" id="photo-form">
                 <input type="text" name="name" class="popup__input" placeholder="Название" id="photo-name">
                 <input type="text" name="link" class="popup__input" placeholder="Ссылка на картинку" id="link">
-                <button type="submit" class="popup__button" id="user-button">Сохранить</button>
+                <button type="submit" class="popup__button" id="photo-button">Создать</button>
             </form>
         </div>
     </section>
+
+    <!--Попап просмотра фотографии-->
+
+    <section class="popup" id="image-popup">
+        <div class="popup__container popup__container_image">
+            <figure class="popup__figure">
+                <button type="button" class="popup__close"></button>
+                <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="...">
+                <figcaption class="popup__caption">...</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!--Шаблон карточки-->
+
+    <template class="template-card">
+        <div class="element">
+            <img class="element__image" src="#" alt="">
+            <button class="element__remove" type="button"></button>
+            <div class="element__like-container">
+                <h2 class="element__name"></h2>
+                <button type="button" class="element__like-icon"></button>
+            </div>
+        </div>
+    </template>
 
     <script src="scripts/index.js"></script>
 </body>
