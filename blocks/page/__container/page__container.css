@@ -3,5 +3,11 @@
    margin: 45px auto 60px;
    display: flex;
    flex-direction: column;
-   border: 1px solid white;
+}
+
+@media screen and (max-width: 500px) {
+   .page__container {
+      min-width: 300px;
+      margin: 28px 19px 26px;
+   }
 }
