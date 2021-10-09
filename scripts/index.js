@@ -1,3 +1,5 @@
+const popup = document.querySelector('.popup');
+
 const popupUser = document.querySelector('#user-popup'); //попап редактирования профиля
 const popupPhoto = document.querySelector('#photo-popup'); //попап добавления фотографий
 const popupImage = document.querySelector('#image-popup'); //попап просмотра фотографий
@@ -68,8 +70,6 @@ function createCard(item) {
    newElement.querySelector('.element__image').alt = item.name; //описание изображения из "коробки"
    addCardAttribute(newElement);
    return (newElement);
-
-   //elements.append(newElement);
 }
 
 function addElement(event) {
@@ -79,7 +79,7 @@ function addElement(event) {
    const newElement = createCard({ name: newElmentName, link: newElementLink });
    elements.prepend(newElement);
    event.currentTarget.reset();
-   togglePopup(popupPhoto);
+   closePopup(popupPhoto);
 }
 
 photoForm.addEventListener('submit', addElement);
@@ -104,24 +104,29 @@ function removeElement(event) {
 //Лайк поставить/удалить
 function likeElement(event) {
    event.target.classList.toggle('element__like-icon_active');
-};
+}
 
 function openPopupImage(event) {
-   togglePopup(popupImage);
+   openPopup(popupImage);
    imageFullScreen.src = event.target.src;
    imageCaption.textContent = event.currentTarget.parentElement.querySelector('.element__name').textContent;
    imageFullScreen.alt = event.currentTarget.parentElement.querySelector('.element__name').textContent;
 }
 
-popupOpenBtn.addEventListener('click', () => togglePopup(popupUser), userForm());
-popupCloseBtn.addEventListener('click', () => togglePopup(popupUser));
-popupPhotoOpenBtn.addEventListener('click', () => togglePopup(popupPhoto));
-popupPhotoCloseBtn.addEventListener('click', () => togglePopup(popupPhoto));
-popupImageCloseBtn.addEventListener('click', () => togglePopup(popupImage));
+popupOpenBtn.addEventListener('click', () => openPopup(popupUser), userForm());
+popupCloseBtn.addEventListener('click', () => closePopup(popupUser));
+popupPhotoOpenBtn.addEventListener('click', () => openPopup(popupPhoto));
+popupPhotoCloseBtn.addEventListener('click', () => closePopup(popupPhoto));
+popupImageCloseBtn.addEventListener('click', () => closePopup(popupImage));
 
-//универсальная функция для открытия/закрытия попапов
-function togglePopup(modal) {
-   modal.classList.toggle('popup_opened');
+//универсальная функция для открытия попапов
+function openPopup(popup) {
+   popup.classList.add('popup_opened');
+}
+
+//универсальная функция для закрытия попапов
+function closePopup(popup) {
+   popup.classList.remove('popup_opened');
 }
 
 //функция редактирования профиля
@@ -134,7 +139,7 @@ function formSubmitHandler(event) {
    event.preventDefault();
    userName.textContent = popupUserName.value;
    userJob.textContent = popupUserJob.value;
-   togglePopup(popupUser);
+   closePopup(popupUser);
 }
 
 popupUser.addEventListener('submit', formSubmitHandler);
