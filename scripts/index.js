@@ -80,6 +80,8 @@ function addElement(event) {
    elements.prepend(newElement);
    event.currentTarget.reset();
    closePopup(popupPhoto);
+   savePhotoBtn.setAttribute("disabled", "disabled");
+   savePhotoBtn.classList.add('popup__button_disabled');
 }
 
 photoForm.addEventListener('submit', addElement);
@@ -122,11 +124,13 @@ popupImageCloseBtn.addEventListener('click', () => closePopup(popupImage));
 //универсальная функция для открытия попапов
 function openPopup(popup) {
    popup.classList.add('popup_opened');
+   document.addEventListener('keydown', escapeClosePopup);
 }
 
 //универсальная функция для закрытия попапов
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
+   document.removeEventListener('keydown', escapeClosePopup);
 }
 
 //функция редактирования профиля
@@ -135,6 +139,8 @@ function userForm() {
    popupUserJob.value = userJob.textContent;
 }
 
+
+//Функуия добавления информации в профиль и закрытие попапа
 function formSubmitHandler(event) {
    event.preventDefault();
    userName.textContent = popupUserName.value;
@@ -143,3 +149,30 @@ function formSubmitHandler(event) {
 }
 
 popupUser.addEventListener('submit', formSubmitHandler);
+
+//закрытие попапов кликом на оверлей
+function overlayClosePopup(event) {
+   if (event.target === event.currentTarget) {
+      closePopup(event.target);
+   }
+}
+
+popupUser.addEventListener('click', overlayClosePopup);
+popupPhoto.addEventListener('click', overlayClosePopup);
+popupImage.addEventListener('click', overlayClosePopup);
+
+//закрытие попапов нажатием на клавишу Esc
+function escapeClosePopup(event) {
+   if (event.key === 'Escape') {
+      const openedPopup = document.querySelector('.popup_opened');
+      if (openedPopup) {
+      closePopup(openedPopup);
+      }
+   }
+}
+
+
+
+
+
+

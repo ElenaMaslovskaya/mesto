@@ -41,10 +41,12 @@
         <div class="popup__container popup__container_user">
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" action="#" name="user-form">
-                <input type="text" name="name" class="popup__input" placeholder="Имя" id="name">
-                <input type="text" name="job" class="popup__input" placeholder="О себе" id="job">
-                <button type="submit" class="popup__button" id="user-button">Сохранить</button>
+            <form class="popup__form" action="#" name="user-form" novalidate>
+                <input type="text" name="name" class="popup__input" placeholder="Имя" id="name" required minlength="2" maxlength="40">
+                <span class="error" id="name-error"></span>
+                <input type="text" name="job" class="popup__input" placeholder="О себе" id="job" required minlength="2" maxlength="200">
+                <span class="error" id="job-error"></span>
+                <button type="submit" class="popup__button" id="user-button" disabled>Сохранить</button>
             </form>
         </div>
     </section>
@@ -55,10 +57,12 @@
         <div class="popup__container popup__container_photo">
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form" action="#" id="photo-form">
-                <input type="text" name="name" class="popup__input" placeholder="Название" id="photo-name">
-                <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку" id="link">
-                <button type="submit" class="popup__button" id="photo-button">Создать</button>
+            <form class="popup__form" action="#" id="photo-form" novalidate>
+                <input type="text" name="photo-name" class="popup__input" placeholder="Название" id="photo-name" required minlength="2" maxlength="30">
+                <span class="error" id="photo-name-error"></span>
+                <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку" id="link" required>
+                <span class="error" id="link-error"></span>
+                <button type="submit" class="popup__button" id="photo-button" disabled>Создать</button>
             </form>
         </div>
     </section>
@@ -89,6 +93,7 @@
     </template>
 
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
 </body>
 
 </html>
