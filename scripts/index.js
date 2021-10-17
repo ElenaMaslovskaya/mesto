@@ -1,5 +1,3 @@
-const popup = document.querySelector('.popup');
-
 const popupUser = document.querySelector('#user-popup'); //попап редактирования профиля
 const popupPhoto = document.querySelector('#photo-popup'); //попап добавления фотографий
 const popupImage = document.querySelector('#image-popup'); //попап просмотра фотографий
@@ -10,19 +8,18 @@ const popupCloseBtn = popupUser.querySelector('.popup__close'); //кнопка �
 const popupPhotoOpenBtn = document.querySelector('.profile__add-button'); //кнопка открытия попапа добавления фотографий
 const popupPhotoCloseBtn = popupPhoto.querySelector('.popup__close'); //кнопка закрытия попапа добавления фотографий
 
-const popupImageOpenBtn = document.querySelector('.element__image'); //кнопка открытия попапа просмотра фотографий
 const popupImageCloseBtn = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа просмотра фотографий
-
-const removeBtn = document.querySelectorAll('.element__remove'); //кнопка удаления карточки
 
 const userName = document.querySelector('.profile__username'); //имя пользователя
 const userJob = document.querySelector('.profile__userjob'); //информация о пользователе
 
-const popupUserName = document.querySelector('#name'); //поле для ввода имени пользователя
-const popupUserJob = document.querySelector('#job'); //поле для ввода информации о пользователе
 const photoForm = popupPhoto.querySelector('#photo-form'); //форма добавления фотографий
 
-const saveProfileBtn = popupUser.querySelector('#user-button'); //кнопка сохранения профиля
+const popupUserName = document.querySelector('#name'); //поле для ввода имени пользователя
+const popupUserJob = document.querySelector('#job'); //поле для ввода информации о пользователе
+const newElmentName = photoForm.querySelector('#photo-name'); //поле для ввода названия фотографии
+const newElementLink = photoForm.querySelector('#link'); //поле для ввода ссылки на фотографию
+
 const savePhotoBtn = popupPhoto.querySelector('#photo-button'); //кнопка сохранения фотографии
 
 const templateCard = document.querySelector('.template-card'); //шаблон карточки
@@ -35,28 +32,28 @@ const imageCaption = popupImage.querySelector('.popup__caption'); //подпис
 
 const initialCards = [
    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+      name: 'Мюнхен',
+      link: 'https://images.unsplash.com/photo-1595867818082-083862f3d630?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
    },
    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+      name: 'Берлин',
+      link: 'https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80'
    },
    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+      name: 'Штуттгарт',
+      link: 'https://images.unsplash.com/photo-1617728035926-9768d5ed60e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80'
    },
    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+      name: 'Кёльн',
+      link: 'https://images.unsplash.com/photo-1578308148355-6e1b5300f134?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80'
    },
    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+      name: 'Гамбург',
+      link: 'https://images.unsplash.com/photo-1473615695634-d284ec918736?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80'
    },
    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+      name: 'Дрезден',
+      link: 'https://images.unsplash.com/photo-1619120810930-6ca5048deee1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1031&q=80'
    }
 ];
 
@@ -74,9 +71,7 @@ function createCard(item) {
 
 function addElement(event) {
    event.preventDefault();
-   const newElmentName = event.currentTarget.querySelector('#photo-name').value;
-   const newElementLink = event.currentTarget.querySelector('#link').value;
-   const newElement = createCard({ name: newElmentName, link: newElementLink });
+   const newElement = createCard({ name: newElmentName.value, link: newElementLink.value });
    elements.prepend(newElement);
    event.currentTarget.reset();
    closePopup(popupPhoto);
@@ -111,8 +106,8 @@ function likeElement(event) {
 function openPopupImage(event) {
    openPopup(popupImage);
    imageFullScreen.src = event.target.src;
-   imageCaption.textContent = event.currentTarget.parentElement.querySelector('.element__name').textContent;
-   imageFullScreen.alt = event.currentTarget.parentElement.querySelector('.element__name').textContent;
+   imageCaption.textContent = event.currentTarget.alt;
+   imageFullScreen.alt = event.currentTarget.alt;
 }
 
 popupOpenBtn.addEventListener('click', () => openPopup(popupUser), userForm());
