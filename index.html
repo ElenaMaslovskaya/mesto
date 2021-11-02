@@ -19,7 +19,7 @@
                 <img class="profile__avatar" alt="Аватар пользователя" src="images/rus-deutsch.jpg">
                 <div class="profile__info">
                     <button type="button" class="profile__edit-button"></button>
-                    <h1 class="profile__username">Немочка</h1>
+                    <h1 class="profile__username">Маруся Кох</h1>
                     <p class="profile__userjob">Русская в Германии</p>
                 </div>
                 <button type="button" class="profile__add-button"></button>
@@ -41,7 +41,7 @@
         <div class="popup__container popup__container_user">
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" action="#" name="user-form" novalidate>
+            <form class="popup__form" action="#" id="user-form" novalidate>
                 <input type="text" name="name" class="popup__input" placeholder="Имя" id="name" required minlength="2" maxlength="40">
                 <span class="error" id="name-error"></span>
                 <input type="text" name="job" class="popup__input" placeholder="О себе" id="job" required minlength="2" maxlength="200">
@@ -92,8 +92,10 @@
         </div>
     </template>
 
-    <script src="scripts/index.js"></script>
-    <script src="scripts/validate.js"></script>
+    <script type="module" src="scripts/FormValidator.js"></script>
+    <script type="module" src="scripts/cards.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/Card.js"></script>
 </body>
 
 </html>
