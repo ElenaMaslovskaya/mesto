@@ -13,7 +13,7 @@ class Card {
       return cardElement;
    }
 
-   _generateCard() {
+   generateCard() {
       this._element = this._getTemplate();
 
       this._elementName = this._element.querySelector('.element__name');

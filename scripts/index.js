@@ -51,21 +51,21 @@ const formEditProfile = new FormValidator(config, profileForm);
 formEditProfile.enableValidation();
 
 // Создание карточки 
-function addNewCard(item) {
+function createElement(item) {
    const card = new Card(item, ".template-card"); // создадим экземпляр карточки
-   const cardElement = card._generateCard();
+   const cardElement = card.generateCard();
    return cardElement;
 };
-
+/*
 // Добавление карточек
 function addCards(item) {
-   const cardElement = addNewCard(item);
+   const cardElement = createElement(item);
    elements.prepend(cardElement);
 };
-
+*/
 //Загрузка массива карточек на страницу
 initialCards.forEach((item) => {
-   elements.append(addNewCard(item));
+   elements.append(createElement(item));
 });
 
 //универсальная функция для открытия попапов
@@ -81,42 +81,48 @@ function closePopup(popup) {
 }
 
 //Функция дабавления информации из формы на страницу 
-function addElements(event) {
+function addElement(event) {
    event.preventDefault(); // чтоб страница не перезагружалась при отправке формы
    const newCardText = event.currentTarget.querySelector("#photo-name").value; // задаем название карточки 
    const newCardLink = event.currentTarget.querySelector("#link").value; // задаем ссылку на карточку
    const newCards = { name: newCardText, link: newCardLink };
 
-   const elementCard = addNewCard(newCards);
+   const elementCard = createElement(newCards);
    elements.prepend(elementCard); // добавляем элемент на страницу
    event.currentTarget.reset(); // чтоб в полях не сохранялись введенные данные  
    closePopup(popupPhoto); //  чтоб автоматом закрывался popup после нажатия на "Создать"
 }
 
-photoForm.addEventListener("submit", addElements);
+photoForm.addEventListener("submit", addElement);
 
-popupOpenBtn.addEventListener('click', () => openPopup(popupUser), userForm());
+popupOpenBtn.addEventListener('click', () => {
+   openPopup(popupUser);
+   getUserInfo()
+});
 popupCloseBtn.addEventListener('click', () => closePopup(popupUser));
-popupPhotoOpenBtn.addEventListener('click', () => openPopup(popupPhoto));
+popupPhotoOpenBtn.addEventListener('click', () => {
+   openPopup(popupPhoto);
+   formAddImg.toggleButtonState();
+});
 popupPhotoCloseBtn.addEventListener('click', () => closePopup(popupPhoto));
 popupImageCloseBtn.addEventListener('click', () => closePopup(popupImage));
 
 
 //функция редактирования профиля
-function userForm() {
+function getUserInfo() {
    popupUserName.value = userName.textContent;
    popupUserJob.value = userJob.textContent;
 }
 
 //Функуия добавления информации в профиль и закрытие попапа
-function formSubmitHandler(event) {
+function userFormSubmitHandler(event) {
    event.preventDefault();
    userName.textContent = popupUserName.value;
    userJob.textContent = popupUserJob.value;
    closePopup(popupUser);
 }
 
-popupUser.addEventListener('submit', formSubmitHandler);
+popupUser.addEventListener('submit', userFormSubmitHandler);
 
 //закрытие попапов кликом на оверлей
 function overlayClosePopup(event) {
@@ -133,9 +139,7 @@ popupImage.addEventListener('click', overlayClosePopup);
 function escapeClosePopup(event) {
    if (event.key === 'Escape') {
       const openedPopup = document.querySelector('.popup_opened');
-      if (openedPopup) {
-         closePopup(openedPopup);
-      }
+      closePopup(openedPopup);
    }
 }
 
