@@ -6,6 +6,7 @@
 * HTML
 * CSS3
 * JS
+* ООП
 
 
 * Ссылка на проект в gh-pages https://elenamaslovskaya.github.io/mesto/
