@@ -1,10 +1,9 @@
-import { openPopup, popupImage } from './index.js';
-
-class Card {
-   constructor(data, cardSelector) {
+export class Card {
+   constructor( { data, handleCardClick }, cardSelector) {
       this._name = data.name;
       this._link = data.link;
       this._cardSelector = cardSelector;
+      this.handleCardClick = handleCardClick;
    }
 
    _getTemplate() {
@@ -37,7 +36,7 @@ class Card {
       });
 
       this._element.querySelector('.element__image').addEventListener('click', () => {
-         this._openPopupImage();
+         this.handleCardClick();
       });
    }
 
@@ -51,16 +50,4 @@ class Card {
    _likeElement() {
       this._element.querySelector('.element__like-icon').classList.toggle('element__like-icon_active');
    }
-
-   //функция открытия попапа с картинкой
-   _openPopupImage() {
-      openPopup(popupImage);
-      const imageFullScreen = popupImage.querySelector('.popup__image');
-      const imageCaption = popupImage.querySelector('.popup__caption');
-      imageFullScreen.src = this._link;
-      imageCaption.textContent = this._name;
-      imageFullScreen.alt = this._name;
-   }
 }
-
-export { Card };

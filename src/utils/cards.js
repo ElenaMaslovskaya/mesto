@@ -1,6 +1,6 @@
 //Шесть карточек из "коробки"
 
-const initialCards = [
+export const initialCards = [
    {
       name: 'Мюнхен',
       link: 'https://images.unsplash.com/photo-1595867818082-083862f3d630?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
@@ -26,7 +26,3 @@ const initialCards = [
       link: 'https://images.unsplash.com/photo-1619120810930-6ca5048deee1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1031&q=80'
    }
 ];
-
-initialCards.reverse();
-
-export { initialCards };

@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* Верстка из макета в Figma\r * HTML\r * CSS3\r * JS\r * ООП",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaMaslovskaya/mesto.git"
+  },
+  "author": "Elena Maslovskaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElenaMaslovskaya/mesto/issues"
+  },
+  "homepage": "https://github.com/ElenaMaslovskaya/mesto#readme"
+}
