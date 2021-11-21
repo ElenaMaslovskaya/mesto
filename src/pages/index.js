@@ -22,6 +22,7 @@ import {
    newElementLink,
    config
 } from "../utils/constants.js";
+import '../pages/index.css';
 
 //валидация формы редактирования профиля
 const popupUserValidator = new FormValidator(config, profileForm);
