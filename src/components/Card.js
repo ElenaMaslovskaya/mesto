@@ -43,7 +43,7 @@ export class Card {
    //функция удаления карточки
    _removeElement() {
       this._element.remove();
-      this._element.innerHTML = "";
+      this._element = null;
    }
 
    //Лайк поставить/удалить

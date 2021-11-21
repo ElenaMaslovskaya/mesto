@@ -67,7 +67,7 @@ const popupWithImageOpen = new PopupWithImage(popupImage);
 popupWithImageOpen.setEventListeners();
 
 //создание карточки 
-const addNewCard = (item) => {
+const createCard = (item) => {
    const card = new Card({
       data: item,
       handleCardClick: () => {
@@ -82,7 +82,7 @@ const addNewCard = (item) => {
 const addCards = new Section({
    items: initialCards,
    renderer: (item) => {
-      const element = addNewCard(item);
+      const element = createCard(item);
       addCards.addItem(element);
    }
 }, elements);
@@ -97,7 +97,7 @@ const photoPopupWithForm = new PopupWithForm({
          name: newElmentName.value,
          link: newElementLink.value
       };
-      const newCard = addNewCard(item);
+      const newCard = createCard(item);
       addCards.addNewItem(newCard);
       photoPopupWithForm.close();
    }
