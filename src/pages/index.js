@@ -1,9 +1,12 @@
+import '../pages/index.css';
+import { Api } from "../components/Api.js";
 import { Card } from "../components/Card.js";
 import { initialCards } from "../utils/cards.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+//import { PopupWithSubmit } from "../components/PopupWithSubmit.js";
 import { UserInfo } from "../components/UserInfo.js";
 import {
    popupUser,
@@ -22,7 +25,17 @@ import {
    newElementLink,
    config
 } from "../utils/constants.js";
-import '../pages/index.css';
+
+//экземпляр класса для отправки запросов
+const api = new Api({
+   baseUrl: "https://nomoreparties.co/v1/cohort-30/",
+   headers: {
+      authorization: "eb8cafe8-806f-4128-87f6-a89a8c96159b",
+      "Content-Type": "application/json",
+   },
+});
+
+api.getInitialCards().then(data => console.log(data))
 
 //валидация формы редактирования профиля
 const popupUserValidator = new FormValidator(config, profileForm);
