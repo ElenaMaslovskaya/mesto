@@ -1,13 +1,12 @@
 export class Section {
-   constructor({ items, renderer }, containerSelector) {
-      this._initialCards = items;//массив данных, которые нужно добавить на страницу при инициализации класса
+   constructor({ renderer }, containerSelector) {
       this._renderer = renderer;//функция, которая отвечает за создание и отрисовку данных на странице
       this._container = containerSelector;//селектор контейнера, в который нужно добавлять созданные элементы.
    }
 
    //публичный метод, который отвечает за отрисовку всех элементов
-   renderItems() {
-      this._initialCards.forEach(item => {
+   renderItems(items) {
+      items.forEach(item => {
          this._renderer(item);
       });
    }
@@ -17,6 +16,7 @@ export class Section {
       this._container.append(element);
    }
 
+   //публичный метод, который добавляет карточку в контейнер
    addNewItem(element) {
       this._container.prepend(element);
    }

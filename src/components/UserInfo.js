@@ -13,8 +13,8 @@ export class UserInfo {
    }
 
    //публичный метод, который принимает новые данные пользователя и добавляет их на страницу
-   setUserInfo(nameInfo, jobInfo) {
-      this._userName.textContent = nameInfo;
-      this._userJob.textContent = jobInfo;
+   setUserInfo({ name, about }) {
+      this._userName.textContent = name;
+      this._userJob.textContent = about;
    }
 }

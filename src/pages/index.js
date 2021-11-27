@@ -1,7 +1,6 @@
 import '../pages/index.css';
 import { Api } from "../components/Api.js";
 import { Card } from "../components/Card.js";
-import { initialCards } from "../utils/cards.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
@@ -28,14 +27,24 @@ import {
 
 //экземпляр класса для отправки запросов
 const api = new Api({
-   baseUrl: "https://nomoreparties.co/v1/cohort-30/",
+   baseUrl: "https://nomoreparties.co/v1/cohort-30",
    headers: {
       authorization: "eb8cafe8-806f-4128-87f6-a89a8c96159b",
       "Content-Type": "application/json",
    },
 });
 
-api.getInitialCards().then(data => console.log(data))
+let userId = null;
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+   .then(([cards, user]) => {
+      userId = user._id;
+      userInfoProfile.setUserInfo(user);
+      addCards.renderItems(cards);
+   
+   console.log('Данные карточек', cards);
+   console.log('Данные пользователя', user);
+   })
 
 //валидация формы редактирования профиля
 const popupUserValidator = new FormValidator(config, profileForm);
@@ -93,14 +102,11 @@ const createCard = (item) => {
 
 //добавление карточек
 const addCards = new Section({
-   items: initialCards,
    renderer: (item) => {
       const element = createCard(item);
       addCards.addItem(element);
    }
 }, elements);
-
-addCards.renderItems();
 
 //экзкмпляр PopupWithForm для для добавления карточек
 const photoPopupWithForm = new PopupWithForm({

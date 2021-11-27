@@ -6,23 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-</head>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
 
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <img class="header__logo" alt="Логотип" src="./images/logo.svg">
+            <img class="header__logo" alt="Логотип" src="bbe2a6eafac19c3d031c.svg">
         </header>
         <main class="content">
             <section class="profile">
-                <div class="profile__avatar-overlay">
-                    <img class="profile__avatar" alt="Аватар пользователя" src="./images/rus-deutsch.jpg" />
-                    <button class="profile__edit-button profile__edit-button_avatar"></button>
-                </div>
+                <img class="profile__avatar" alt="Аватар пользователя" src="00481c595e3e53816626.jpg"/>
                 <div class="profile__info">
                     <button type="button" class="profile__edit-button"></button>
-                    <h1 class="profile__username"></h1>
-                    <p class="profile__userjob"></p>
+                    <h1 class="profile__username">Маруся Кох</h1>
+                    <p class="profile__userjob">Русская в Германии</p>
                 </div>
                 <button type="button" class="profile__add-button"></button>
             </section>
@@ -44,11 +41,9 @@
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" action="#" id="user-form" novalidate>
-                <input type="text" name="name" class="popup__input" placeholder="Имя" id="name" required minlength="2"
-                    maxlength="40">
+                <input type="text" name="name" class="popup__input" placeholder="Имя" id="name" required minlength="2" maxlength="40">
                 <span class="error" id="name-error"></span>
-                <input type="text" name="job" class="popup__input" placeholder="О себе" id="job" required minlength="2"
-                    maxlength="200">
+                <input type="text" name="job" class="popup__input" placeholder="О себе" id="job" required minlength="2" maxlength="200">
                 <span class="error" id="job-error"></span>
                 <button type="submit" class="popup__button" id="user-button" disabled>Сохранить</button>
             </form>
@@ -62,8 +57,7 @@
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" action="#" id="photo-form" novalidate>
-                <input type="text" name="photo-name" class="popup__input" placeholder="Название" id="photo-name"
-                    required minlength="2" maxlength="30">
+                <input type="text" name="photo-name" class="popup__input" placeholder="Название" id="photo-name" required minlength="2" maxlength="30">
                 <span class="error" id="photo-name-error"></span>
                 <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку" id="link" required>
                 <span class="error" id="link-error"></span>
@@ -78,34 +72,9 @@
         <div class="popup__container popup__container_image">
             <figure class="popup__figure">
                 <button type="button" class="popup__close"></button>
-                <img class="popup__image"
-                    src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="...">
+                <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="...">
                 <figcaption class="popup__caption">...</figcaption>
             </figure>
-        </div>
-    </section>
-
-    <!--Попап подтверждения удаления фотографии-->
-    <section class="popup" id="delete-popup">
-        <div class="popup__container popup__container_delete">
-            <button type="button" class="popup__close"></button>
-            <h2 class="popup__title">Вы уверены?</h2>
-            <button type="submit" class="popup__button popup__button_delete" id="delete-button">Да</button>
-        </div>
-    </section>
-
-    <!-- Попап редактирования аватара пользователя-->
-
-    <section class="popup" id="avatar-popup">
-        <div class="popup__container popup__container_avatar">
-            <button type="button" class="popup__close"></button>
-            <h2 class="popup__title">Обновить аватар</h2>
-            <form class="popup__form popup__form_avatar" action="#" id="avatar-form" novalidate>
-                <input type="url" name="link-avatar" class="popup__input" placeholder="Ссылка на аватар"
-                    id="link-avatar" required>
-                <span class="error" id="link-error"></span>
-                <button type="submit" class="popup__button" id="avatar-button" disabled>Сохранить</button>
-            </form>
         </div>
     </section>
 
@@ -117,10 +86,7 @@
             <button class="element__remove" type="button"></button>
             <div class="element__like-container">
                 <h2 class="element__name"></h2>
-                <div class="element__likes">
-                    <button type="button" class="element__like-icon"></button>
-                    <span class="element__likes-counter">0</span>
-                </div>
+                <button type="button" class="element__like-icon"></button>
             </div>
         </div>
     </template>
