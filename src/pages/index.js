@@ -188,7 +188,7 @@ const createCard = (data) => {
          })
       },
       handleLikeClick: (cardId) => {
-         api.likeCard(cardId)
+         api.addLike(cardId)
             .then((res) => {
                card.like(res);
             })
@@ -196,8 +196,8 @@ const createCard = (data) => {
                console.log(`Ошибка: ${err}`);
             })
       },
-      handleLikeDelete: (cardId) => {
-         api.dislikeCard(cardId)
+      handleRemoveLike: (cardId) => {
+         api.removeLike(cardId)
             .then((res) => {
                card.like(res);
             })

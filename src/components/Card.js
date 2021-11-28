@@ -5,17 +5,17 @@ export class Card {
       handleCardClick,
       handleLikeClick,
       handleRemoveCard,
-      handleLikeDelete }, cardSelector) {
+      handleRemoveLike }, cardSelector) {
       this._name = data.name;
       this._link = data.link;
       this._likes = data.likes;
-      this._ownerId = data.ownerId;
-      this._cardId = data.cardId;
+      this._ownerId = data.owner._id;
+      this._cardId = data._id;
       this._userId = userId;
       this._handleCardClick = handleCardClick;
       this._handleLikeClick = handleLikeClick;
       this._handleRemoveCard = handleRemoveCard;
-      this._handleLikeDelete = handleLikeDelete;
+      this._handleRemoveLike = handleRemoveLike;
       this._cardSelector = cardSelector;
    }
 
@@ -77,7 +77,7 @@ export class Card {
    //метод для лайка карточки
    _setLike = () => {
       if (this._isLiked()) {
-         this._handleLikeDelete(this._cardId);
+         this._handleRemoveLike(this._cardId);
       } else {
          this._handleLikeClick(this._cardId);
       }

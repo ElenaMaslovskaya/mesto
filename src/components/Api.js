@@ -7,26 +7,27 @@ export class Api {
    //Ответ сервера
    _serverResponse(res) {
       if (res.ok) {
-         return res.json()
+         return res.json();
       }
-      return Promise.reject(`Ошибка: ${res.status}`)
+      return Promise.reject(`Ошибка: ${res}`)
    }
 
    //Получить карточки
    getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
-            method: "GET",
+            method: 'GET',
             headers: this._headers,
          })
          .then((res) => {
             return this._serverResponse(res)
-         });
+         })
    }
 
    //Получить данные пользователя
    getUserInfo() {
       return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._headers,
+            method: 'GET',
+            headers: this._headers
          })
          .then((res) => {
             return this._serverResponse(res)
@@ -40,22 +41,22 @@ export class Api {
             headers: this._headers,
             body: JSON.stringify({
                name: data.name,
-               about: data.about,
+               about: data.about
             })
          })
          .then((res) => {
             return this._serverResponse(res)
-         });
+         })
    }
 
    //Добавить новую карточку
    addNewCard(data) {
-      return fetch(`${this._baseUrl}/cards/`, {
+      return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-               name: `${data.name}`,
-               link: `${data.link}`
+               name: data.title,
+               link: data.link
             })
          })
          .then((res) => {
@@ -63,21 +64,22 @@ export class Api {
          })
    }
 
-   //лайк карточки
-   likeCard(cardId) {
+   //поставить лайк
+   addLike(cardId) {
       return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-         method: "PUT",
+         method: 'PUT',
          headers: this._headers,
-      }).then((res) => {
+      })
+      .then((res) => {
          return this._serverResponse(res)
-      });
+      })
    }
 
-   //Дизлайк карточки
-   dislikeCard(cardId) {
+   //снять лайк
+   removeLike(cardId) {
       return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-            method: "DELETE",
-            headers: this._headers
+            method: 'DELETE',
+            headers: this._headers,
          })
          .then((res) => {
             return this._serverResponse(res)
@@ -87,10 +89,10 @@ export class Api {
    // Удалить карточку
    deleteCard(cardId) {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
-         method: "DELETE",
+         method: 'DELETE',
          headers: this._headers,
-      }).
-      then((res) => {
+      })
+      .then((res) => {
          return this._serverResponse(res)
       })
    }
@@ -98,12 +100,13 @@ export class Api {
    // Обновить аватар
    updateAvatar(data) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
-         method: "PATCH",
+         method: 'PATCH',
          headers: this._headers,
          body: JSON.stringify({
             avatar: data.avatar
-         }),
-      }).then((res) => {
+         })
+      })
+      .then((res) => {
          return this._serverResponse(res)
       })
    }
