@@ -2,8 +2,8 @@ export class FormValidator {
    constructor(config, formElement) {
       this._formElement = formElement;
       this._config = config;
-      this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-      this._submitButton = this._formElement.querySelector(this._config.submitButtonSelector);
+      this._inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+      this._submitButton = formElement.querySelector(config.submitButtonSelector);
    }
 
    //показать ошибку
@@ -31,6 +31,16 @@ export class FormValidator {
       }
    }
 
+   //очистка ошибок
+   resetValidation() {
+      this._toggleButtonState();
+      this._inputList.forEach((inputElement) => {
+
+         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+         this._hideError(inputElement, errorElement);
+      });
+   }
+
    //переключение кнопки в активное или неактивное состояние
    _toggleButtonState = () => {
       const isFormValid = this._formElement.checkValidity();
@@ -46,21 +56,11 @@ export class FormValidator {
    //слушатели событий
 
    _setEventListeners = () => {
-      Array.from(this._inputList).forEach((inputElement) => {
+      Array.from(this._inputList).forEach(inputElement => {
          inputElement.addEventListener("input", () => {
             this._checkInputValidity(inputElement);
             this._toggleButtonState();
          });
-      });
-   }
-
-   //очистка ошибок
-   resetValidation() {
-      this._toggleButtonState();
-      this._inputList.forEach((inputElement) => {
-
-         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-         this._hideError(inputElement, errorElement);
       });
    }
 
