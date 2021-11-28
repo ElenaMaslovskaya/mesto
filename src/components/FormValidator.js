@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
    constructor(config, formElement) {
       this._formElement = formElement;
       this._config = config;
@@ -32,7 +32,7 @@ class FormValidator {
    }
 
    //переключение кнопки в активное или неактивное состояние
-   toggleButtonState = () => {
+   _toggleButtonState = () => {
       const isFormValid = this._formElement.checkValidity();
       if (isFormValid) {
          this._submitButton.classList.remove(this._config.inactiveButtonClass);
@@ -46,18 +46,18 @@ class FormValidator {
    //слушатели событий
 
    _setEventListeners = () => {
-      this._inputList.forEach(inputElement => {
+      Array.from(this._inputList).forEach((inputElement) => {
          inputElement.addEventListener("input", () => {
             this._checkInputValidity(inputElement);
-            this.toggleButtonState();
+            this._toggleButtonState();
          });
       });
    }
 
    //очистка ошибок
    resetValidation() {
-      this.toggleButtonState();
-      this._inputList.forEach(inputElement => {
+      this._toggleButtonState();
+      this._inputList.forEach((inputElement) => {
 
          const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
          this._hideError(inputElement, errorElement);
@@ -65,10 +65,10 @@ class FormValidator {
    }
 
    //включить валидацию
-   enableValidation() {
+   enableValidation = () => {
+      this._formElement.addEventListener("submit", (event) => {
+         event.preventDefault();
+      });
       this._setEventListeners();
    }
-
 }
-
-export { FormValidator };

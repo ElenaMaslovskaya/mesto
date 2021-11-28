@@ -4,9 +4,11 @@ import { Popup } from "./Popup.js"
 export class PopupWithForm extends Popup {
    constructor({ popupSelector, handleFormSubmit }) {
       super(popupSelector);
-      this.handleFormSubmit = handleFormSubmit;
+      this._handleFormSubmit = handleFormSubmit;
       this._element = popupSelector;
       this._form = this._element.querySelector('.popup__form');
+      this._submitButton = this._form.querySelector('.popup__button');
+      this._submitButtonDefault = this._submitButton.textContent;
    }
 
    //приватный метод, который собирает данные всех полей формы
@@ -22,7 +24,7 @@ export class PopupWithForm extends Popup {
          this._formValues[input.name] = input.value;
       });
 
-      // возвращаем объект значений
+      // возвращаем объект значений 
       return this._formValues;
    }
 
@@ -31,7 +33,7 @@ export class PopupWithForm extends Popup {
       super.setEventListeners();
       this._form.addEventListener("submit", (event) => {
          event.preventDefault();
-         this.handleFormSubmit(this._getInputValues());
+         this._handleFormSubmit(this._getInputValues());
       });
    }
 
@@ -39,5 +41,14 @@ export class PopupWithForm extends Popup {
    close() {
       super.close();
       this._form.reset();
+   }
+
+   // отобразить "Сохранение..."" на кнопке вместо "Сохранить"
+   renderLoading(isLoading) {
+      if (isLoading) {
+         this._submitButton.textContent = "Сохранение...";
+      } else {
+         this._submitButton.textContent = this._submitButtonDefault;
+      }
    }
 }

@@ -1,13 +1,7 @@
-function serverResponse(res) {
-   if (res.ok) {
-      return res.json()
-   }
-   return Promise.reject(`Ошибка: ${res.status}`)
-}
 export class Api {
-   constructor(params) {
-      this._baseUrl = params.baseUrl;
-      this._headers = params.headers;
+   constructor(config) {
+      this._baseUrl = config.baseUrl;
+      this._headers = config.headers;
    }
 
    //Ответ сервера
@@ -20,11 +14,10 @@ export class Api {
 
    //Получить карточки
    getInitialCards() {
-      console.log(this._baseUrl);
       return fetch(`${this._baseUrl}/cards`, {
-         method: "GET",
-         headers: this._headers,
-      })
+            method: "GET",
+            headers: this._headers,
+         })
          .then((res) => {
             return this._serverResponse(res)
          });
@@ -33,8 +26,8 @@ export class Api {
    //Получить данные пользователя
    getUserInfo() {
       return fetch(`${this._baseUrl}/users/me`, {
-         headers: this._headers,
-      })
+            headers: this._headers,
+         })
          .then((res) => {
             return this._serverResponse(res)
          });
@@ -43,13 +36,13 @@ export class Api {
    //Обновить информацию о пользователе
    updateUserInfo(data) {
       return fetch(`${this._baseUrl}/users/me`, {
-         method: 'PATCH',
-         headers: this._headers,
-         body: JSON.stringify({
-            name: data.name,
-            about: data.about,
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+               name: data.name,
+               about: data.about,
+            })
          })
-      })
          .then((res) => {
             return this._serverResponse(res)
          });
@@ -57,20 +50,20 @@ export class Api {
 
    //Добавить новую карточку
    addNewCard(data) {
-      return fetch(`${this._baseUrl}/cards`, {
-         method: 'POST',
-         headers: this._headers,
-         body: JSON.stringify({
-            name: data.name,
-            link: data.link,
+      return fetch(`${this._baseUrl}/cards/`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+               name: `${data.name}`,
+               link: `${data.link}`
+            })
          })
-      })
          .then((res) => {
             return this._serverResponse(res)
-         });
+         })
    }
 
-   //Лайк карточки
+   //лайк карточки
    likeCard(cardId) {
       return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
          method: "PUT",
@@ -83,11 +76,12 @@ export class Api {
    //Дизлайк карточки
    dislikeCard(cardId) {
       return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-         method: "DELETE",
-         headers: this._headers,
-      }).then((res) => {
-         return this._serverResponse(res)
-      });
+            method: "DELETE",
+            headers: this._headers
+         })
+         .then((res) => {
+            return this._serverResponse(res)
+         })
    }
 
    // Удалить карточку
@@ -95,21 +89,22 @@ export class Api {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
          method: "DELETE",
          headers: this._headers,
-      }).then((res) => {
+      }).
+      then((res) => {
          return this._serverResponse(res)
-      });
+      })
    }
 
    // Обновить аватар
-   updateAvatar(avatar) {
-      return fetch(`${this._baseUrl}users/me/avatar`, {
+   updateAvatar(data) {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
          method: "PATCH",
          headers: this._headers,
          body: JSON.stringify({
-            avatar: `${avatar}`,
+            avatar: data.avatar
          }),
       }).then((res) => {
          return this._serverResponse(res)
-      });
+      })
    }
 }

@@ -21,7 +21,7 @@ export class Popup {
    //метод, добавляющий слушатель клика на иконку закрытия попапа и на оверлей
    setEventListeners() {
       this._popup.querySelector(".popup__close").addEventListener("click", () => this.close());
-      this._popup.addEventListener('click', (event) => this._overlayClosePopup(event));
+      this._popup.addEventListener("mousedown", (event) => this._overlayClosePopup(event));
    }
 
    //публичный медод, отвечающий за открытие попапа

@@ -8,7 +8,7 @@ export class PopupWithImage extends Popup {
       this._name = this._popup.querySelector(".popup__caption");
    }
 
-   open({ name, link }) {
+   open(name, link) {
       super.open(); // вызываем родительский метод
       this._link.src = link; // ссылка на картинку
       this._name.textContent = name; // подпись к картинке
