@@ -4,8 +4,8 @@ import { Popup } from "./Popup.js"
 export class PopupWithImage extends Popup {
    constructor(popupSelector) {
       super(popupSelector); //вызываем конструктор родительского класса с единственным аргументом
-      this._link = this._popup.querySelector(".popup__image");
-      this._name = this._popup.querySelector(".popup__caption");
+      this._link = this._popup.querySelector('.popup__image');
+      this._name = this._popup.querySelector('.popup__caption');
    }
 
    open(name, link) {
