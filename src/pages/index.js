@@ -43,8 +43,8 @@ import {
    photoForm,
    profileForm,
    avatarForm,
-   //newElmentName,
-   //newElementLink,
+   newElmentName,
+   newElementLink,
    config
 } from "../utils/constants.js";
 
@@ -54,29 +54,40 @@ const api = new Api({
    headers: {
       authorization: "eb8cafe8-806f-4128-87f6-a89a8c96159b",
       "Content-Type": "application/json",
-   },
-});
+   }
+})
 
 let userId = null;
 
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-   .then(([cards, user]) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+   .then(([user, cards]) => {
       userId = user._id;
       userInfoProfile.setUserInfo(user);
-      addCards.renderItems(cards);
+      userInfoProfile.setUserAvatar(user);
 
-      console.log('Данные карточек', cards);
-      console.log('Данные пользователя', user);
+      addCards.renderItems(cards);
    })
    .catch((err) => {
       console.log(`Ошибка: ${err}`);
    })
 
+   //валидация формы редактирования профиля
+const popupUserValidator = new FormValidator(config, profileForm);
+popupUserValidator.enableValidation();
+
+//валидация формы добавления фото
+const popupPhotoValidator = new FormValidator(config, photoForm);
+popupPhotoValidator.enableValidation();
+
+//валидация формы редактирования аватара
+const popupAvatarValidator = new FormValidator(config, avatarForm);
+popupAvatarValidator.enableValidation();
+
 //добавление карточек
 const addCards = new Section({
    renderer: (item) => {
-      const element = createCard(item);
-      addCards.addItem(element);
+      const element = createCard(item)
+      addCards.addItem(element)
    }
 }, elements);
 
@@ -84,7 +95,7 @@ const addCards = new Section({
 const userInfoProfile = new UserInfo({
    userSelector: userName,
    infoSelector: userJob,
-   avatarSelector: avatar,
+   avatarSelector: avatar
 });
 
 //экзкмпляр PopupWithForm для редактирования профиля
@@ -94,7 +105,7 @@ const profilePopupWithForm = new PopupWithForm({
       profilePopupWithForm.renderLoading(true);
       api.updateUserInfo({
             name: data.name,
-            about: data.about
+            about: data.about,
          })
          .then((data) => {
             userInfoProfile.setUserInfo(data);
@@ -113,9 +124,9 @@ profilePopupWithForm.setEventListeners();
 
 //открытие попапа редактирования профиля
 const popupUserEdit = () => {
-   const data = userInfoProfile.getUserInfo();
-   popupUserName.value = data.name;
-   popupUserJob.value = data.about;
+   const getUserInfo = userInfoProfile.getUserInfo();
+   popupUserName.value = getUserInfo.name;
+   popupUserJob.value = getUserInfo.about;
 
    popupUserValidator.resetValidation();
    profilePopupWithForm.open();
@@ -206,8 +217,7 @@ const createCard = (data) => {
             })
       },
    }, ".template-card"); // создадим экземпляр карточки
-   const cardElement = card.generateCard();
-   return cardElement
+   return card.generateCard();
 }
 
 //экзкмпляр PopupWithForm для для добавления карточек
@@ -216,7 +226,7 @@ const photoPopupWithForm = new PopupWithForm({
    handleFormSubmit: (data) => {
       photoPopupWithForm.renderLoading(true);
       api.addNewCard({
-            name: data.title,
+            title: data.title,
             link: data.link
          })
          .then((data) => {
@@ -244,15 +254,3 @@ const popupPhotoOpen = () => {
 }
 
 popupPhotoOpenBtn.addEventListener('click', popupPhotoOpen);
-
-//валидация формы редактирования профиля
-const popupUserValidator = new FormValidator(config, profileForm);
-popupUserValidator.enableValidation();
-
-//валидация формы добавления фото
-const popupPhotoValidator = new FormValidator(config, photoForm);
-popupPhotoValidator.enableValidation();
-
-//валидация формы редактирования аватара
-const popupAvatarValidator = new FormValidator(config, avatarForm);
-popupAvatarValidator.enableValidation();

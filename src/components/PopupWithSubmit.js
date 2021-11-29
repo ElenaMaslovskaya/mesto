@@ -8,6 +8,10 @@ export class PopupWithSubmit extends Popup {
       this._submitButtonDefault = this._submitButton.textContent;
    }
 
+   setSubmitActions(handler) {
+      this.handleFormSubmit = handler
+   }
+
    setEventListeners() {
       super.setEventListeners();
       this._submitButton.addEventListener('submit', (event) => {
