@@ -1,5 +1,9 @@
 export class UserInfo {
-   constructor({ userSelector, infoSelector, avatarSelector }) {
+   constructor({
+      userSelector,
+      infoSelector,
+      avatarSelector
+   }) {
       this._userName = userSelector;
       this._userJob = infoSelector;
       this._userAvatar = avatarSelector;

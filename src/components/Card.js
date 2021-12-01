@@ -5,7 +5,8 @@ export class Card {
       handleCardClick,
       handleLikeClick,
       handleRemoveCard,
-      handleRemoveLike }, cardSelector) {
+      handleRemoveLike
+   }, cardSelector) {
       this._name = data.name;
       this._link = data.link;
       this._likes = data.likes;
@@ -39,7 +40,7 @@ export class Card {
       this._elementName.textContent = this._name;
       this._elementImg.src = this._link;
       this._elementImg.alt = this._name;
-      this._likesCounter.textContent =this._likes.length;
+      this._likesCounter.textContent = this._likes.length;
       this._checkRemoveCard();
       this._checkActiveLike();
 
@@ -96,7 +97,7 @@ export class Card {
    };
 
    //удалениe карточки
-   _removeElement = () => {
+   removeElement = () => {
       this._element.remove();
       this._element = null;
    }

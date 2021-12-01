@@ -20,7 +20,7 @@ export class PopupWithSubmit extends Popup {
       })
    }
 
-   // отображение "Удаление..." на кнопке 
+   // отображение "Удаление..." на кнопке
    renderLoading(isLoading) {
       if (isLoading) {
          this._submitButton.textContent = "Удаление...";

@@ -1,7 +1,9 @@
 export class Section {
-   constructor({ renderer }, containerSelector) {
-      this._renderer = renderer;//функция, которая отвечает за создание и отрисовку данных на странице
-      this._container = containerSelector;//селектор контейнера, в который нужно добавлять созданные элементы.
+   constructor({
+      renderer
+   }, containerSelector) {
+      this._renderer = renderer; //функция, которая отвечает за создание и отрисовку данных на странице
+      this._container = containerSelector; //селектор контейнера, в который нужно добавлять созданные элементы.
    }
 
    //публичный метод, который отвечает за отрисовку всех элементов

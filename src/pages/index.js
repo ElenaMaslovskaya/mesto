@@ -71,7 +71,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       console.log(`Ошибка: ${err}`);
    })
 
-   //валидация формы редактирования профиля
+//валидация формы редактирования профиля
 const popupUserValidator = new FormValidator(config, profileForm);
 popupUserValidator.enableValidation();
 
@@ -105,7 +105,7 @@ const profilePopupWithForm = new PopupWithForm({
       profilePopupWithForm.renderLoading(true);
       api.updateUserInfo({
             name: data.name,
-            about: data.about,
+            about: data.job,
          })
          .then((data) => {
             userInfoProfile.setUserInfo(data);
@@ -136,13 +136,11 @@ popupOpenBtn.addEventListener('click', popupUserEdit);
 
 const avatarPopupWithForm = new PopupWithForm({
    popupSelector: popupAvatar,
-   handleFormSubmit: (data) => {
+   handleFormSubmit: () => {
       avatarPopupWithForm.renderLoading(true);
-      api.updateAvatar({
-            avatar: data.avatar
-         })
+      api.updateAvatar(popupAvatarInput.value)
          .then((data) => {
-            userInfoProfile.setUserAvatar(data);
+            userInfoProfile.setUserAvatar(data.avatar);
          })
          .then(() => {
             avatarPopupWithForm.close()
@@ -173,7 +171,7 @@ popupWithImageOpen.setEventListeners();
 const popupPhotoDelete = new PopupWithSubmit(popupDelete)
 popupPhotoDelete.setEventListeners();
 
-//создание карточки 
+//создание карточки
 const createCard = (data) => {
    const card = new Card({
       data,
@@ -188,7 +186,7 @@ const createCard = (data) => {
             api.deleteCard(cardId)
                .then((res) => {
                   popupPhotoDelete.close()
-                  card.deleteCard(res)
+                  card.removeElement(res)
                })
                .catch((err) => {
                   console.log(`Ошибка: ${err}`);
@@ -225,10 +223,7 @@ const photoPopupWithForm = new PopupWithForm({
    popupSelector: popupPhoto,
    handleFormSubmit: (data) => {
       photoPopupWithForm.renderLoading(true);
-      api.addNewCard({
-            title: data.title,
-            link: data.link
-         })
+      api.addNewCard(data)
          .then((data) => {
             const element = createCard(data)
             addCards.addNewItem(element);

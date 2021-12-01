@@ -16,7 +16,7 @@ export class Api {
    getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
-            headers: this._headers,
+            headers: this._headers
          })
          .then((res) => {
             return this._serverResponse(res)
@@ -31,7 +31,7 @@ export class Api {
          })
          .then((res) => {
             return this._serverResponse(res)
-         });
+         })
    }
 
    //Обновить информацию о пользователе
@@ -51,12 +51,13 @@ export class Api {
 
    //Добавить новую карточку
    addNewCard(data) {
+      console.log(data);
       return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-               name: data.title,
-               link: data.link
+               name: data['photo-name'],
+               link: data['link']
             })
          })
          .then((res) => {
@@ -99,11 +100,12 @@ export class Api {
 
    // Обновить аватар
    updateAvatar(data) {
+      console.log(data);
       return fetch(`${this._baseUrl}/users/me/avatar`, {
          method: 'PATCH',
          headers: this._headers,
          body: JSON.stringify({
-            avatar: data.avatar
+            avatar: data
          })
       })
       .then((res) => {

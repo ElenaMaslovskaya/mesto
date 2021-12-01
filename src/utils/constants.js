@@ -5,7 +5,7 @@ export const popupAvatar = document.querySelector('#avatar-popup');//попап 
 export const popupDelete = document.querySelector('#delete-popup');//попап подтверждения удаления фотографии
 
 export const popupOpenBtn = document.querySelector('#profile-edit'); //кнопка открытия попапа редактирования профиля
-export const popupAvatarOpenBtn = document.querySelector('#avatar-edit');//кнопка открытия попапа редактирования аватара
+export const popupAvatarOpenBtn = document.querySelector('.profile__edit-button_avatar');//кнопка открытия попапа редактирования аватара
 export const popupPhotoOpenBtn = document.querySelector('.profile__add-button'); //кнопка закрытия попапа редактирования профиля
 export const popupDeleteOpenBtn = document.querySelector('.element__remove');//кнопка удаления фотографии
 
