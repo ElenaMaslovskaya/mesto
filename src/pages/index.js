@@ -149,20 +149,20 @@ const photoPopupWithForm = new PopupWithForm({
 photoPopupWithForm.setEventListeners();
 
 //открытие попапа добавления карточек
-const popupPhotoOpen = () => {
+const openPopupPhoto = () => {
    popupPhotoValidator.resetValidation();
    photoPopupWithForm.open();
 }
 
-popupPhotoOpenBtn.addEventListener('click', popupPhotoOpen);
+popupPhotoOpenBtn.addEventListener('click', openPopupPhoto);
 
 //....Работа с аватаром....//
 
 const avatarPopupWithForm = new PopupWithForm({
    popupElement: popupAvatar,
-   handleFormSubmit: () => {
+   handleFormSubmit: (data) => {
       avatarPopupWithForm.renderLoading(true);
-      api.updateAvatar(popupAvatarInput.value)
+      api.updateAvatar(data)
          .then((data) => {
             userInfoProfile.setUserAvatar(data);
          })
