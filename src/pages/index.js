@@ -32,7 +32,7 @@ import {
    popupOpenBtn,
    popupAvatarOpenBtn,
    popupPhotoOpenBtn,
-   popupDeleteOpenBtn,
+   //popupDeleteOpenBtn,
    userName,
    userJob,
    avatar,
@@ -43,8 +43,8 @@ import {
    photoForm,
    profileForm,
    avatarForm,
-   newElmentName,
-   newElementLink,
+   //newElmentName,
+   //newElementLink,
    config
 } from "../utils/constants.js";
 
@@ -68,8 +68,8 @@ const addCards = new Section({
 }, elements);
 
 //экзкмпляр PopupWithImage для для просмотра фотографий
-const popupWithImageOpen = new PopupWithImage(popupImage);
-popupWithImageOpen.setEventListeners();
+const openPopupWithImage = new PopupWithImage(popupImage);
+openPopupWithImage.setEventListeners();
 
 //экземпляр PopupWithSubmit для удаления фотографий
 const popupPhotoDelete = new PopupWithSubmit(popupDelete)
@@ -81,7 +81,7 @@ const createCard = (data) => {
       data,
       userId,
       handleCardClick: (name, link) => {
-         popupWithImageOpen.open(name, link)
+         openPopupWithImage.open(name, link)
       },
       handleRemoveCard: (cardId) => {
          popupPhotoDelete.open();
@@ -126,7 +126,7 @@ const createCard = (data) => {
 
 //экзкмпляр PopupWithForm для для добавления карточек
 const photoPopupWithForm = new PopupWithForm({
-   popupSelector: popupPhoto,
+   popupElement: popupPhoto,
    handleFormSubmit: (data) => {
       photoPopupWithForm.renderLoading(true);
       api.addNewCard(data)
@@ -159,8 +159,8 @@ popupPhotoOpenBtn.addEventListener('click', popupPhotoOpen);
 //....Работа с аватаром....//
 
 const avatarPopupWithForm = new PopupWithForm({
-   popupSelector: popupAvatar,
-   handleFormSubmit: (data) => {
+   popupElement: popupAvatar,
+   handleFormSubmit: () => {
       avatarPopupWithForm.renderLoading(true);
       api.updateAvatar(popupAvatarInput.value)
          .then((data) => {
@@ -181,25 +181,25 @@ const avatarPopupWithForm = new PopupWithForm({
 avatarPopupWithForm.setEventListeners();
 
 // Открытие попапа редактирования аватара
-const popupAvatarOpen = () => {
+const openPopupAvatar = () => {
    popupAvatarValidator.resetValidation();
    avatarPopupWithForm.open();
 }
 
-popupAvatarOpenBtn.addEventListener('click', popupAvatarOpen);
+popupAvatarOpenBtn.addEventListener('click', openPopupAvatar);
 
 //....Работа с профилем пользователя....//
 
 //отображение информации о пользователе на странице
 const userInfoProfile = new UserInfo({
-   userSelector: userName,
-   infoSelector: userJob,
-   avatarSelector: avatar
+   userElement: userName,
+   infoElement: userJob,
+   avatarElement: avatar
 });
 
 //экзкмпляр PopupWithForm для редактирования профиля
 const profilePopupWithForm = new PopupWithForm({
-   popupSelector: popupUser,
+   popupElement: popupUser,
    handleFormSubmit: (data) => {
       profilePopupWithForm.renderLoading(true);
       api.updateUserInfo({
@@ -222,7 +222,7 @@ const profilePopupWithForm = new PopupWithForm({
 profilePopupWithForm.setEventListeners();
 
 //открытие попапа редактирования профиля
-const popupUserEdit = () => {
+const editPopupUser = () => {
    const getUserInfo = userInfoProfile.getUserInfo();
    popupUserName.value = getUserInfo.name;
    popupUserJob.value = getUserInfo.about;
@@ -231,7 +231,7 @@ const popupUserEdit = () => {
    profilePopupWithForm.open();
 }
 
-popupOpenBtn.addEventListener('click', popupUserEdit);
+popupOpenBtn.addEventListener('click', editPopupUser);
 
 //....Валидация форм....//
 

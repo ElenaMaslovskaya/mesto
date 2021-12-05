@@ -1,12 +1,12 @@
 export class UserInfo {
    constructor({
-      userSelector,
-      infoSelector,
-      avatarSelector
+      userElement,
+      infoElement,
+      avatarElement
    }) {
-      this._userName = userSelector;
-      this._userJob = infoSelector;
-      this._userAvatar = avatarSelector;
+      this._userName = userElement;
+      this._userJob = infoElement;
+      this._userAvatar = avatarElement;
    }
 
    //публичный метод, который возвращает объект с данными пользователя

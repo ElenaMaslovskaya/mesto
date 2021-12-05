@@ -2,10 +2,10 @@ import { Popup } from "./Popup.js"
 
 //класс, который наследует от Popup и перезаписывает родительский метод close и setEventListeners
 export class PopupWithForm extends Popup {
-   constructor({ popupSelector, handleFormSubmit }) {
-      super(popupSelector);
-      this._element = popupSelector;
-      this._form = this._element.querySelector('.popup__form');
+   constructor({ popupElement, handleFormSubmit }) {
+      super(popupElement);
+      this._inputList = this._popup.querySelectorAll('.popup__input');
+      this._form = this._popup.querySelector('.popup__form');
       this._submitButton = this._form.querySelector('.popup__button');
       this._submitButtonDefault = this._submitButton.textContent;
       this._handleFormSubmit = handleFormSubmit;
@@ -14,7 +14,7 @@ export class PopupWithForm extends Popup {
    //приватный метод, который собирает данные всех полей формы
    _getInputValues() {
       // достаём все элементы полей
-      this._inputList = this._element.querySelectorAll('.popup__input');
+      //this._inputList = this._popup.querySelectorAll('.popup__input');
 
       // создаём пустой объект
       this._formValues = {};

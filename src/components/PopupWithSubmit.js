@@ -3,9 +3,8 @@ import {
 } from "./Popup.js";
 
 export class PopupWithSubmit extends Popup {
-   constructor(popupSelector) {
-      super(popupSelector);
-      this._popup = document.querySelector('#delete-popup');
+   constructor(popupElement) {
+      super(popupElement);
       this._submitButton = this._popup.querySelector('#delete-button');
       this._submitButtonDefault = this._submitButton.textContent;
       this._submitDeleteBind = this._submitDelete.bind(this)
@@ -25,10 +24,6 @@ export class PopupWithSubmit extends Popup {
       this._popup.addEventListener('submit', this._submitDeleteBind)
    }
 
-   close = () => {
-      super.close()
-      this._popup.removeEventListener('submit', this._submitDeleteBind);
-   }
 
    // отображение "Удаление..." на кнопке
    renderLoading(isLoading) {

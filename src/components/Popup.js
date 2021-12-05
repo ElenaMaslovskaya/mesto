@@ -1,6 +1,6 @@
 export class Popup {
-   constructor(popupSelektor) {
-      this._popup = popupSelektor; //селектор попапа
+   constructor(popupElement) {
+      this._popup = popupElement; //элемент попапа
       this._handleEscClose = this._handleEscClose.bind(this); //явная привязка
       this._overlayClosePopup = this._overlayClosePopup.bind(this); //явная привязка
    }

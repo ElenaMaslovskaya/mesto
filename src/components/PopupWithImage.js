@@ -2,8 +2,8 @@ import { Popup } from "./Popup.js"
 
 //класс, который наследует от Popup и перезаписывает родительский метод open
 export class PopupWithImage extends Popup {
-   constructor(popupSelector) {
-      super(popupSelector); //вызываем конструктор родительского класса с единственным аргументом
+   constructor(popupElement) {
+      super(popupElement); //вызываем конструктор родительского класса с единственным аргументом
       this._link = this._popup.querySelector('.popup__image');
       this._name = this._popup.querySelector('.popup__caption');
    }
