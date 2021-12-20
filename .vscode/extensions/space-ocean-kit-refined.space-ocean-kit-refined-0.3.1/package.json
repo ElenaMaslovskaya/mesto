@@ -1,0 +1,49 @@
+{
+	"name": "space-ocean-kit-refined",
+	"displayName": "Space Ocean Kit Refined",
+	"description": "This is a refined redesign of the theme OceanKit with a little inspiration by One Dark Pro. Supported files: *.js, *.html, *.css, *.jsx, *.json, *.md, and *.py",
+	"version": "0.3.1",
+	"publisher": "space-ocean-kit-refined",
+	"bugs": {
+		"url": "https://github.com/aichbauer/space-ocean-kit-refined/issues"
+	},
+	"homepage": "https://github.com/aichbauer/space-ocean-kit-refined/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aichbauer/space-ocean-kit-refined/"
+	},
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"space ocean kit refined",
+		"space",
+		"ocean",
+		"kit",
+		"refined"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Space Ocean Kit Refined",
+				"uiTheme": "vs-dark",
+				"path": "./themes/SpaceOceanKitRefined.json"
+			}
+		]
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#1c1f26",
+		"theme": "dark"
+	},
+	"__metadata": {
+		"id": "ec2f2533-ff98-49dd-b1c2-21e050b3fcb1",
+		"publisherId": "4bf2cd67-0bea-410b-9c0f-7b4025f548a1",
+		"publisherDisplayName": "space-ocean-kit-refined",
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1639753393592
+	}
+}
